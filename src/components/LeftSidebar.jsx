@@ -17,7 +17,7 @@ import PlaylistIcon from './icons/PlaylistIcon';
 
 
 function LeftSidebar() {
-  const [{ token }, dispatch] = useStateProvider();
+  const [ dispatch] = useStateProvider();
     
     const logout = () => {
       const token = "";

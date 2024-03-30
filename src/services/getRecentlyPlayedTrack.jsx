@@ -39,21 +39,19 @@ export const RecentlyPlayedTrackProvider = () => {
                         const recentlyplayed = data.items.map(item => {
                             return {
                                 id: item.track.id,
+                                played_at: item.played_at,
                                 name: item.track.name,
                                 image_url: item.track.album.images[2].url,
                                 duration_s: convertMsToMinSec(item.track.duration_ms),
                                 artists: item.track.artists.map(artist => {
-                                            return {
-                                                id: artist.id,
-                                                name: artist.name,
-                                            }
-                                        }),
+                                    return {
+                                        id: artist.id,
+                                        name: artist.name,
+                                    }
+                                }),
                             }
                         })
-
-
-                        
-                        // console.log(recentlyplayed);
+                        // console.log(data);
                         dispatch({ type: reducerCases.SET_RECENTLY_PLAYED_TRACK, recentlyplayed });
                     } else {
                         dispatch({ type: reducerCases.SET_RECENTLY_PLAYED_TRACK, recentlyplayed: '' });
@@ -64,18 +62,18 @@ export const RecentlyPlayedTrackProvider = () => {
                     if (error.response) {
                         // The request was made and the server responded with a status code
                         console.log(error.response.status);
-                        if(error.response.status === 401) {
+                        if (error.response.status === 401) {
                             const token = logout();
-                            dispatch({ type: reducerCases.SET_TOKEN, token});
+                            dispatch({ type: reducerCases.SET_TOKEN, token });
                         }
 
-                      } else if (error.request) {
+                    } else if (error.request) {
                         // The request was made but no response was received
                         console.log('No response received:', error.request);
-                      } else {
+                    } else {
                         // Something happened in setting up the request that triggered an error
                         console.error('Error:', error.message);
-                      }
+                    }
                 });
         };
         getRecentlyPlayedTrackData();

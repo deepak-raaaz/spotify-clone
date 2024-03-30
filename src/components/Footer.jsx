@@ -9,14 +9,12 @@ import RepeateIcon from './icons/RepeateIcon';
 import VolumeIcon from './icons/VolumeIcon';
 import LikeIcon from './icons/LikeIcon';
 import { Slider } from '@mui/material';
-import { RecentlyPlayedTrackProvider } from '../services/getRecentlyPlayedTrack';
 
 function Footer() {
-  const [{ currentplaying, recentlyplayed }] = useStateProvider();
+  const [{ currentplaying }] = useStateProvider();
   CurrentlyPlayingTrackProvider();
   const customColor = "#ffffff";
-  RecentlyPlayedTrackProvider();
-  console.log(recentlyplayed);
+  
   return (
     <>
       {

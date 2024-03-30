@@ -2,6 +2,7 @@ import { reducerCases } from "./Constants";
 
 export const initialState = {
     token: null,
+    userInfo: null,
     playlists : [],
     toptracks : [],
     currentplaying : [],
